@@ -1,22 +1,22 @@
-function Shape(color){
+function parent(color){
 this.color = color;
 }
-Shape.prototype.duplicate = function(){
+parent.prototype.duplicate = function(){
     console.log('duplicate');
 }
 
-function Circle(radius, color){
-    Shape.call(this, color);
+function child(radius, color){
+    parent.call(this, color);
     this.radius = radius;
 }
-Circle.prototype = Object.create(Shape.prototype);
-Circle.prototype.constructor = Circle;
+child.prototype = Object.create(parent.prototype);
+child.prototype.constructor = child;
 
-Circle.prototype.draw = function() {
+child.prototype.draw = function() {
     console.log('draw');
 }
-let s = new Shape();
-let c = new Circle(5, 'red');
+let s = new parent();
+let c = new child(5, 'red');
 console.log(c);
 
 
